@@ -1,0 +1,1 @@
+# Basic project wth express and sequelize-cli migrations
