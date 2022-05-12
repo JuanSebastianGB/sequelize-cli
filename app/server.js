@@ -1,6 +1,6 @@
 import express, { json, urlencoded } from 'express';
 import morgan from 'morgan';
-import { connection } from './database/db.js';
+import { sequelize } from './models/index';
 import mainRoute from './routes/routes.route.js';
 import userRoute from './routes/user.route.js';
 import addressRoute from './routes/address.route.js';
@@ -32,7 +32,7 @@ app.use('/api/addresses', addressRoute);
 app.listen(PORT, () => {
     console.log(`Running on port ${PORT}`);
 
-    connection.sync({ force: false })
+    sequelize.sync({ force: false })
         .then(() => {
             console.log("connection set successfully");
         });

@@ -1,4 +1,4 @@
-import { Address } from '../database/db.js';
+import { Address } from '../models/index';
 
 export const all = async (req, res) => {
     const addresses = await Address.findAll({

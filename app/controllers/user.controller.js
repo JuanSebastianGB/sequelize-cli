@@ -1,4 +1,4 @@
-import { User } from "../database/db";
+import { User } from "../models/index";
 
 export const all = async (req, res) => {
 
