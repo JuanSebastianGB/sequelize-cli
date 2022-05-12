@@ -1,6 +1,8 @@
 import express, { json, urlencoded } from 'express';
 import morgan from 'morgan';
-import { connection } from './database/db.js'
+import { connection } from './database/db.js';
+import mainRoute from './routes/routes.route.js';
+import userRoute from './routes/user.route.js';
 
 const app = express();
 
@@ -19,11 +21,16 @@ app.get('/', (req, res) => {
     })
 });
 
+app.use('/api/routes', mainRoute);
+app.use('/api/users', userRoute);
+
+
+
 // Starting Server
 app.listen(PORT, () => {
     console.log(`Running on port ${PORT}`);
 
-    connection.sync({ force: true })
+    connection.sync({ force: false })
         .then(() => {
             console.log("connection set successfully");
         });
