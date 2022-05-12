@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import { connection } from './database/db.js';
 import mainRoute from './routes/routes.route.js';
 import userRoute from './routes/user.route.js';
+import addressRoute from './routes/address.route.js';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/routes', mainRoute);
 app.use('/api/users', userRoute);
+app.use('/api/addresses', addressRoute);
 
 
 

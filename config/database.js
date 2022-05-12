@@ -7,6 +7,6 @@ module.exports = {
     dialect: process.env.DB_DIALECT || 'mysql',
     define: {
         timestamps: false,
-        undescored: true
+        underscored: true
     }
 }
