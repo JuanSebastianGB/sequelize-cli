@@ -1,5 +1,7 @@
 import express, { json, urlencoded } from 'express';
 import morgan from 'morgan';
+import { connection } from './database/db.js'
+
 const app = express();
 
 // Settings
@@ -12,10 +14,18 @@ app.use(morgan('tiny'));
 
 // Routes
 app.get('/', (req, res) => {
-    res.send('Hello world');
+    res.json({
+        output: "hello world"
+    })
 });
 
-
-
 // Starting Server
-app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+app.listen(PORT, () => {
+    console.log(`Running on port ${PORT}`);
+
+    connection.sync({ force: true })
+        .then(() => {
+            console.log("connection set successfully");
+        });
+});
+
